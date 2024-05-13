@@ -40,28 +40,27 @@ namespace VuLongWPF
                 var email = txtEmail.Text;
                 var password = txtPassword.Password;
 
-                var account = _systemAccountRepository.Authenticate(email, password);
-                if (account is not null)
+                // Authenticate for admin 
+                if (email.Trim().ToLower() == adminEmail.Trim().ToLower() && password.Trim().ToLower() == adminPassword.Trim().ToLower())
                 {
+                    AdminWindow adminWindow = new AdminWindow();
+                    adminWindow.Show();
+                    Hide();
+                }
+                else
+                {
+                    var account = _systemAccountRepository.Authenticate(email, password);
                     if (account.AccountRole == AccountRoles.StaffRole)
                     {
                         // Navigate to staff window
                         StaffWindow staffWindow = new StaffWindow();
                         staffWindow.Show();
-
                         Hide();
                     }
-                }
-                else if (email.Trim().ToLower() == adminEmail.Trim().ToLower() && password.Trim().ToLower() == adminPassword.Trim().ToLower())
-                {
-                    AdminWindow adminWindow = new AdminWindow();
-                    adminWindow.Show();
-
-                    Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid email or password", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    else if (account.AccountRole == AccountRoles.LecturerRole)
+                    {
+                        MessageBox.Show("Your role is not supported!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
             }
             catch (Exception ex)
