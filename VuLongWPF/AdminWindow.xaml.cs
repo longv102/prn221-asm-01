@@ -15,6 +15,7 @@ namespace VuLongWPF
         public AdminWindow()
         {
             InitializeComponent();
+            txtAccountId.IsEnabled = false;
         }
 
         private void LoadAccountData()
@@ -50,7 +51,27 @@ namespace VuLongWPF
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var account = new SystemAccountRequest()
+                {
+                    AccountId = short.Parse(txtAccountId.Text),
+                    AccountEmail = txtAccountEmail.Text,
+                    AccountName = txtAccountName.Text,
+                    AccountRole = int.Parse(txtAccountRole.Text),
+                };
+                AdminSubWindow subWindow = new()
+                {
+                    Request = account,
+                    IsUpdate = true
+                };
+                subWindow.Show();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -67,17 +88,26 @@ namespace VuLongWPF
                         MessageBox.Show("Delete successfully!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                         // Load account data again after delete action
                         LoadAccountData();
+                        Clear();
                     }
                 }
                 else
                 {
-                    // Handle the case
+                    // Do nothing
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void Clear()
+        {
+            txtAccountId.Text = string.Empty;
+            txtAccountEmail.Text = string.Empty;
+            txtAccountName.Text = string.Empty;
+            txtAccountRole.Text = string.Empty;
         }
 
         private void dgAccounts_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

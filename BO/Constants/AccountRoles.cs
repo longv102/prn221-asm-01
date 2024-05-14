@@ -1,5 +1,12 @@
 ﻿namespace BO.Constants
 {
+    public class Role
+    {
+        public required string RoleName { get; set; }
+
+        public int Value { get; set; }
+    }
+
     public static class AccountRoles
     {
         /// <summary>

@@ -33,8 +33,8 @@ namespace VuLongWPF
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json", true, true)
                     .Build();
-                var adminEmail = configuration["FuNewsSystemAccount:Email"];
-                var adminPassword = configuration["FuNewsSystemAccount:Password"];
+                var adminEmail = configuration["FuNewsSystemAccount:Email"] ?? string.Empty;
+                var adminPassword = configuration["FuNewsSystemAccount:Password"] ?? string.Empty;
 
                 // Retrieve from login window textboxes
                 var email = txtEmail.Text;

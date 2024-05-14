@@ -6,11 +6,11 @@ namespace Repositories.Contracts
     {
         IEnumerable<SystemAccountResponse> GetAccounts();
 
+        IEnumerable<SystemAccountResponse> SearchAccountByName(string name);
+
         SystemAccountResponse Authenticate(string email, string password);
 
         bool DeleteAccount(short accountId);   
-
-        IEnumerable<SystemAccountResponse> SearchAccountByName(string name);
 
         bool CreateAccount(SystemAccountRequest request);
 
