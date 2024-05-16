@@ -15,7 +15,7 @@
 
         <TextBox x:Name="txtAccountId" HorizontalAlignment="Left" Margin="111,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" PreviewTextInput="txtAccountId_PreviewTextInput"/>
         <TextBox x:Name="txtAccountName" HorizontalAlignment="Left" Margin="111,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <TextBox x:Name="txtAccountEmail" HorizontalAlignment="Left" Margin="111,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" PreviewTextInput="txtAccountEmail_PreviewTextInput"/>
+        <TextBox x:Name="txtAccountEmail" HorizontalAlignment="Left" Margin="111,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
         <ComboBox x:Name="cboRole" HorizontalAlignment="Left" Margin="111,204,0,0" VerticalAlignment="Top" Width="200"/>
 
         <Button x:Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="78,254,0,0" VerticalAlignment="Top" Height="27" Width="67" Click="btnCreate_Click"/>

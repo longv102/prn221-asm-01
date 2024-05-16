@@ -1,0 +1,24 @@
+﻿<Window x:Class="VuLongWPF.ProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Staff Profile" Height="330" Width="480">
+    <Grid Background="AliceBlue">
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Personal Profile" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+
+        <Label Content="Account ID" HorizontalAlignment="Left" Margin="30,63,0,0" VerticalAlignment="Top"/>
+        <Label Content="Account Name" HorizontalAlignment="Left" Margin="28,101,0,0" VerticalAlignment="Top"/>
+        <Label Content="Account Email" HorizontalAlignment="Left" Margin="30,140,0,0" VerticalAlignment="Top"/>
+        <Label Content="Account Role" HorizontalAlignment="Left" Margin="30,178,0,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="txtAccountId" HorizontalAlignment="Center" Margin="0,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232"/>
+        <TextBox x:Name="txtAccountName" HorizontalAlignment="Center" Margin="0,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232"/>
+        <TextBox x:Name="txtAccountEmail" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232" Margin="0,144,0,0"/>
+        <TextBox x:Name="txtAccountRole" HorizontalAlignment="Center" Margin="0,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="232"/>
+        
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="97,225,0,0" VerticalAlignment="Top" Height="36" Width="89" Click="btnUpdate_Click"/>
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="267,225,0,0" VerticalAlignment="Top" Width="89" Height="36" Click="btnExit_Click"/>
+    </Grid>
+</Window>

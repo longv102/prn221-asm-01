@@ -10,10 +10,14 @@ namespace Repositories.Contracts
 
         SystemAccountResponse Authenticate(string email, string password);
 
+        SystemAccountResponse GetAccountById(short id);
+
         bool DeleteAccount(short accountId);   
 
         bool CreateAccount(SystemAccountRequest request);
 
-        bool UpdateAccount(SystemAccountRequest request);   
+        bool UpdateAccount(SystemAccountRequest request);
+
+        bool UpdateAccountForStaff(SystemAccountRequest request);
     }
 }

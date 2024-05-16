@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace VuLongWPF
 {
@@ -19,9 +7,52 @@ namespace VuLongWPF
     /// </summary>
     public partial class StaffWindow : Window
     {
+        public short CurrentUserId { get; set; }
+
         public StaffWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void btnCategory_Click(object sender, RoutedEventArgs e)
+        {
+            CategoryManagement categoryManagement = new CategoryManagement();
+            categoryManagement.Show();
+        }
+
+        private void btnNews_Click(object sender, RoutedEventArgs e)
+        {
+            NewsManagement window = new NewsManagement()
+            {
+                UserId = CurrentUserId,
+            };
+            window.Show();
+        }
+
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow profileWindow = new ProfileWindow()
+            {
+                UserId = CurrentUserId,
+            };
+            profileWindow.Show();
+        }
+
+        private void btnViewNews_Click(object sender, RoutedEventArgs e)
+        {
+            NewsHistory newsHistory = new NewsHistory()
+            {
+                UserId = CurrentUserId
+            };
+            newsHistory.Show();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
         }
     }
 }

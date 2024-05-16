@@ -14,6 +14,9 @@ namespace Repositories
 
         public bool DeleteAccount(short accountId) => SystemAccountDAO.Instance.DeleteAccount(accountId);
 
+        public SystemAccountResponse GetAccountById(short id)
+            => SystemAccountDAO.Instance.Get(id);
+
         public IEnumerable<SystemAccountResponse> GetAccounts()
             => SystemAccountDAO.Instance.GetAccounts();
 
@@ -22,5 +25,8 @@ namespace Repositories
 
         public bool UpdateAccount(SystemAccountRequest request)
             => SystemAccountDAO.Instance.UpdateAccount(request);
+
+        public bool UpdateAccountForStaff(SystemAccountRequest request)
+            => SystemAccountDAO.Instance.UpdateAccountForStaff(request);
     }
 }

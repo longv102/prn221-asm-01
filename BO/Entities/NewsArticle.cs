@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DAL;
+﻿namespace DAL;
 
 public partial class NewsArticle
 {

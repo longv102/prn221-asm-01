@@ -38,7 +38,7 @@ namespace VuLongWPF
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            Hide();
+            Close();
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
         }

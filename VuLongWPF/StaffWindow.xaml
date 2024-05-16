@@ -3,10 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:VuLongWPF"
         mc:Ignorable="d"
-        Title="StaffWindow" Height="450" Width="800">
+        Title="Staff" Height="280" Width="400">
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Welcome to FU News Management System" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+
+        <Button x:Name="btnCategory" Content="Manage Categories" HorizontalAlignment="Left" Margin="50,60,0,0" VerticalAlignment="Top" Height="45" Width="120" Click="btnCategory_Click"/>
+        <Button x:Name="btnNews" Content="Manage News" HorizontalAlignment="Left" Margin="224,60,0,0" VerticalAlignment="Top" Height="45" Width="120" Click="btnNews_Click"/>
+        <Button x:Name="btnProfile" Content="Manage profile" HorizontalAlignment="Left" Margin="50,127,0,0" VerticalAlignment="Top" Height="45" Width="120" Click="btnProfile_Click"/>
+        <Button x:Name="btnViewNews" Content="View created news" HorizontalAlignment="Left" Margin="224,127,0,0" VerticalAlignment="Top" Height="45" Width="120" Click="btnViewNews_Click"/>
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Center" Margin="0,201,0,0" VerticalAlignment="Top" Height="27" Width="84" Click="btnExit_Click"/>
+
     </Grid>
 </Window>

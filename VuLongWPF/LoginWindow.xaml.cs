@@ -53,7 +53,10 @@ namespace VuLongWPF
                     if (account.AccountRole == AccountRoles.StaffRole)
                     {
                         // Navigate to staff window
-                        StaffWindow staffWindow = new StaffWindow();
+                        StaffWindow staffWindow = new StaffWindow()
+                        {
+                            CurrentUserId = account.AccountId,
+                        };
                         staffWindow.Show();
                         Hide();
                     }

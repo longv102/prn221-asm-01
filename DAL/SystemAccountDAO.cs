@@ -190,7 +190,7 @@ namespace DAL
 
                 var account = context.SystemAccounts.Find(request.AccountId);
                 if (account is null)
-                    throw new Exception("Account email has already existed!");
+                    throw new Exception("Account does not exist!");
                 // Update
                 account.AccountName = request.AccountName;
                 account.AccountEmail = request.AccountEmail;
@@ -198,11 +198,59 @@ namespace DAL
                 context.SaveChanges();
                 result = true;
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception(ex.Message);
+                throw;
             }
             return result;
+        }
+
+        public bool UpdateAccountForStaff(SystemAccountRequest request)
+        {
+            var result = false;
+            try
+            {
+                var context = new FunewsManagementDbContext();
+                if (string.IsNullOrEmpty(request.AccountName))
+                    throw new Exception("Account name is required!");
+
+                var account = context.SystemAccounts.Find(request.AccountId);
+                if (account is null)
+                    throw new Exception("Account does not exist!");
+                // Update
+                account.AccountName = request.AccountName;
+                context.Update(account);
+                context.SaveChanges();
+                result = true;
+            }
+            catch
+            {
+                throw;
+            }
+            return result;
+        }
+
+        public SystemAccountResponse Get(short accountId)
+        {
+            try
+            {
+                var context = new FunewsManagementDbContext();
+                var account = context.SystemAccounts.Find(accountId);
+                if (account is null)
+                    throw new Exception("Account does not exist!");
+                var response = new SystemAccountResponse()
+                {
+                    AccountId = account.AccountId,
+                    AccountName = account.AccountName,
+                    AccountEmail = account.AccountEmail,
+                    AccountRole = account.AccountRole,
+                };
+                return response;
+            } 
+            catch
+            {
+                throw;
+            }
         }
     }
 }
