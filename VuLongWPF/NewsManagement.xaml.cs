@@ -87,18 +87,21 @@ namespace VuLongWPF
         {
             try
             {
+                var request = new NewsArticleRequest()
+                {
+                    NewsArticleId = txtArticleId.Text,
+                };
                 NewsManagementSubWindow window = new NewsManagementSubWindow()
                 {
                     IsUpdate = true,
-
+                    Request = request,
                     UserId = UserId,
                 };
                 window.Show();
-
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -132,6 +135,34 @@ namespace VuLongWPF
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var searchValue = txtSearch.Text;
+                if (!string.IsNullOrEmpty(searchValue))
+                {
+                    if (rdTitle.IsChecked == true)
+                    {
+                        // Search by title
+                        var news = _newsRepository.SearchNewsByTitle(searchValue);
+                        dgNews.ItemsSource = news;
+                    }
+                    else if (rdContent.IsChecked == true)
+                    {
+                        // Search by content
+                        var news = _newsRepository.SearchNewsByContent(searchValue);
+                        dgNews.ItemsSource = news;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 }

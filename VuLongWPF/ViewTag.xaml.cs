@@ -1,4 +1,5 @@
-﻿using Repositories;
+﻿using BO.Dtos;
+using Repositories;
 using Repositories.Contracts;
 using System.Windows;
 
@@ -46,7 +47,15 @@ namespace VuLongWPF
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
-            Load();
+            try
+            {
+                dgTags.ItemsSource = null;
+                Load();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnAddTag_Click(object sender, RoutedEventArgs e)
@@ -66,6 +75,36 @@ namespace VuLongWPF
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBoxResult option = MessageBox.Show("Remove this tag?", "Confirm Remove", 
+                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (option == MessageBoxResult.Yes)
+                {
+                    var tagValue = (int)cboTag.SelectedValue;
+                    var result = _tagRepository.RemoveTag(NewsArticleId, tagValue);
+                    if (result)
+                        MessageBox.Show("Remove successfully!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void dgTags_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (dgTags.SelectedItem is not null)
+            {
+                var selectedItem = dgTags.SelectedItem as TagResponse;
+                // Bind these properties into textboxes
+                cboTag.Text = selectedItem?.TagName;
             }
         }
     }

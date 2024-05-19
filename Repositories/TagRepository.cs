@@ -9,5 +9,8 @@ namespace Repositories
         public bool AddTag(string newsArticleId, int tagId) => TagDAO.Instance.AddTagToNewsArticle(newsArticleId, tagId);
 
         public IEnumerable<TagResponse> GetTags() => TagDAO.Instance.GetTags();
+
+        public bool RemoveTag(string newsArticleId, int tagId)
+            => TagDAO.Instance.RemoveTagOfNewsArticle(newsArticleId, tagId);
     }
 }

@@ -4,20 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Tags" Height="400" Width="400">
+        Title="Tags" Height="380" Width="500">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="List of tag" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <DataGrid x:Name="dgTags" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" Margin="56,110,56,126">
+        <TextBlock HorizontalAlignment="Center " Margin="0,10,0,0" TextWrapping="Wrap" Text="List of tag" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <DataGrid x:Name="dgTags" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" Margin="56,105,56,144" SelectionChanged="dgTags_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="Tag ID" Binding="{Binding TagId}"/>
                 <DataGridTextColumn Width="*" Header="Tag Name" Binding="{Binding TagName}"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="66,281,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.469,3.91" Height="44" Width="79" Click="btnLoad_Click"/>
-        <Button x:Name="btnAddTag" Content="Add more tags" HorizontalAlignment="Left" Margin="248,281,0,0" VerticalAlignment="Top" Height="44" Width="88" Click="btnAddTag_Click"/>
-        
-        <Label Content="Tag" HorizontalAlignment="Left" Margin="66,61,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="cboTag" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="56,247,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.469,3.91" Height="44" Width="79" Click="btnLoad_Click"/>
+        <Button x:Name="btnAddTag" Content="Add more tags" HorizontalAlignment="Left" Margin="204,247,0,0" VerticalAlignment="Top" Height="44" Width="88" Click="btnAddTag_Click"/>
+        <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="356,247,0,0" VerticalAlignment="Top" Height="44" Width="88" Click="btnRemove_Click"/>
+
+        <Label Content="Tag" HorizontalAlignment="Left" Margin="105,54,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="cboTag" HorizontalAlignment="Center" Margin="0,58,0,0" VerticalAlignment="Top" Width="200"/>
     </Grid>
 </Window>

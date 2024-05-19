@@ -109,11 +109,6 @@ namespace VuLongWPF
             }
         }
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            Hide();
-        }
-
         private void dgCategories_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (dgCategories.SelectedItem is not null)
@@ -136,6 +131,18 @@ namespace VuLongWPF
                     var categories = _categoryRepository.SearchCategoryByName(searchValue);
                     dgCategories.ItemsSource = categories;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LoadCategoryData();
             }
             catch (Exception ex)
             {

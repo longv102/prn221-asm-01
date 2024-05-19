@@ -12,6 +12,8 @@
         
         public short CategoryId { get; set; }
 
+        //public string CategoryName { get; set; } = null!;
+
         public short CreatedById { get; set; }
 
         public DateTime? ModifiedDate { get; set; }

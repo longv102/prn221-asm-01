@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Staff" Height="280" Width="400">
-    <Grid>
+    <Grid Background="AliceBlue">
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Welcome to FU News Management System" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
 
         <Button x:Name="btnCategory" Content="Manage Categories" HorizontalAlignment="Left" Margin="50,60,0,0" VerticalAlignment="Top" Height="45" Width="120" Click="btnCategory_Click"/>

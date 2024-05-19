@@ -7,5 +7,7 @@ namespace Repositories.Contracts
         IEnumerable<TagResponse> GetTags();
 
         bool AddTag(string newsArticleId, int tagId);
+
+        bool RemoveTag(string newsArticleId, int tagId);
     }
 }

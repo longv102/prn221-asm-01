@@ -4,31 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="News Management" Height="800" Width="900">
-    <Grid>
+        Title="News Management" Height="750" Width="900">
+    <Grid Background="AliceBlue">
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="News Management" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
 
-        <TextBox x:Name="txtArticleId" HorizontalAlignment="Left" Margin="158,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="137,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="278" Height="70" IsReadOnly="True"/>
+        <TextBox x:Name="txtArticleId" HorizontalAlignment="Left" Margin="158,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" IsEnabled="False"/>
+        <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="158,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Height="64" IsReadOnly="True"/>
         <TextBox x:Name="txtCreatedDate" HorizontalAlignment="Left" Margin="158,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" IsReadOnly="True"/>
-        <TextBox x:Name="txtContent" HorizontalAlignment="Left" Margin="137,252,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="546" Height="117" IsReadOnly="True"/>
+        <TextBox x:Name="txtContent" HorizontalAlignment="Left" Margin="157,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" Height="97" IsReadOnly="True"/>
         <TextBox x:Name="txtCategoryName" HorizontalAlignment="Left" Margin="550,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" IsReadOnly="True"/>
         <TextBox x:Name="txtCreatedBy" HorizontalAlignment="Left" Margin="550,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" IsReadOnly="True"/>
         <TextBox x:Name="txtModifiedDate" HorizontalAlignment="Left" Margin="550,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" IsReadOnly="True"/>
 
         <Label Content="Article ID" HorizontalAlignment="Left" Margin="73,59,0,0" VerticalAlignment="Top"/>
-        <Label Content="Title" HorizontalAlignment="Left" Margin="83,165,0,0" VerticalAlignment="Top" Height="32" Width="35"/>
+        <Label Content="Title" HorizontalAlignment="Left" Margin="73,149,0,0" VerticalAlignment="Top" Height="32" Width="36"/>
         <Label Content="Created Date" HorizontalAlignment="Left" Margin="73,97,0,0" VerticalAlignment="Top"/>
-        <Label Content="Content" HorizontalAlignment="Left" Margin="73,297,0,0" VerticalAlignment="Top" Height="28" Width="55"/>
+        <Label Content="Content" HorizontalAlignment="Left" Margin="74,245,0,0" VerticalAlignment="Top" Height="28" Width="55"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="459,60,0,0" VerticalAlignment="Top"/>
         <Label Content="Created By" HorizontalAlignment="Left" Margin="459,98,0,0" VerticalAlignment="Top"/>
         <Label Content="Modified Date" HorizontalAlignment="Left" Margin="459,136,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.489,1.119"/>
 
-        <Button x:Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="459,178,0,0" VerticalAlignment="Top" Height="41" Width="90" Click="btnCreate_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="587,177,0,0" VerticalAlignment="Top" Height="41" Width="90" Click="btnDelete_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="708,177,0,0" VerticalAlignment="Top" Height="41" Width="90" Click="btnUpdate_Click"/>
+        <Button x:Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="135,335,0,0" VerticalAlignment="Top" Height="41" Width="90" Click="btnCreate_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="307,335,0,0" VerticalAlignment="Top" Height="41" Width="90" Click="btnDelete_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="476,335,0,0" VerticalAlignment="Top" Height="41" Width="90" Click="btnUpdate_Click"/>
 
-        <DataGrid x:Name="dgNews" Margin="24,402,24,132" CanUserAddRows="False" AutoGenerateColumns="False" SelectionChanged="dgNews_SelectionChanged" IsReadOnly="True">
+        <DataGrid x:Name="dgNews" Margin="24,402,24,137" CanUserAddRows="False" AutoGenerateColumns="False" SelectionChanged="dgNews_SelectionChanged" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="ID" Binding="{Binding NewsArticleId}"/>
                 <DataGridTextColumn Width="*" Header="Title" Binding="{Binding NewsTitle}"/>
@@ -40,8 +40,19 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="182,683,0,0" VerticalAlignment="Top" Height="46" Width="90" Click="btnLoad_Click"/>
-        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="587,683,0,0" VerticalAlignment="Top" Height="46" Width="90" Click="btnExit_Click"/>
-        <Button x:Name="btnTag" Content="View tags" HorizontalAlignment="Left" Margin="383,683,0,0" VerticalAlignment="Top" Height="46" Width="90" Click="btnTag_Click"/>
+        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="640,335,0,0" VerticalAlignment="Top" Height="41" Width="90" Click="btnLoad_Click"/>
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="571,626,0,0" VerticalAlignment="Top" Height="50" Width="138" Click="btnExit_Click"/>
+        <Button x:Name="btnTag" Content="Manage tags" HorizontalAlignment="Left" Margin="169,626,0,0" VerticalAlignment="Top" Height="50" Width="138" Click="btnTag_Click"/>
+
+        <GroupBox Header="Search options" Margin="550,181,108,417">
+            <StackPanel Orientation="Vertical">
+                <RadioButton x:Name="rdTitle" Content="Title name" Width="198" Margin="0,0,0,15"/>
+                <RadioButton x:Name="rdContent" Content="Content" Width="201" Margin="0,0,0,15"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="txtSearch" TextWrapping="Wrap" Text="" Width="146" Margin="0,0,10,0"/>
+                    <Button x:Name="btnSearch" Content="Search" Width="50" Click="btnSearch_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>

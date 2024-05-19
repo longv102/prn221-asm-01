@@ -116,10 +116,10 @@ namespace VuLongWPF
             {
                 var selectedItem = dgAccounts.SelectedItem as SystemAccountResponse;
                 // Bind these properties into textboxes
-                txtAccountId.Text = selectedItem.AccountId.ToString();
-                txtAccountName.Text = selectedItem.AccountName;
-                txtAccountEmail.Text = selectedItem.AccountEmail;
-                txtAccountRole.Text = selectedItem.AccountRole.ToString();
+                txtAccountId.Text = selectedItem?.AccountId.ToString();
+                txtAccountName.Text = selectedItem?.AccountName;
+                txtAccountEmail.Text = selectedItem?.AccountEmail;
+                txtAccountRole.Text = selectedItem?.AccountRole.ToString();
             }
         }
 

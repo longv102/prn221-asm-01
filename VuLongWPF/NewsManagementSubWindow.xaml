@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Create and Update News" Height="450" Width="800">
-    <Grid>
+    <Grid Background="AliceBlue">
         <TextBox x:Name="txtArticleId" HorizontalAlignment="Left" Margin="137,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
         <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="137,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="263" Height="70"/>
         <TextBox x:Name="txtContent" HorizontalAlignment="Left" Margin="137,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="511" Height="117"/>

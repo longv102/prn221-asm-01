@@ -184,16 +184,13 @@ namespace DAL
                 if (string.IsNullOrEmpty(request.AccountEmail))
                     throw new Exception("Account email is required!");
                 
-                var emailDuplication = context.SystemAccounts.Any(x => x.AccountEmail == request.AccountEmail);
-                if (emailDuplication)
-                    throw new Exception("Account email has already existed!");
-
                 var account = context.SystemAccounts.Find(request.AccountId);
                 if (account is null)
                     throw new Exception("Account does not exist!");
                 // Update
                 account.AccountName = request.AccountName;
                 account.AccountEmail = request.AccountEmail;
+                account.AccountRole = request.AccountRole;
                 context.Update(account);
                 context.SaveChanges();
                 result = true;

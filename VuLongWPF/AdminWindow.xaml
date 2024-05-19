@@ -14,8 +14,8 @@
 
         <TextBox x:Name="txtAccountId" HorizontalAlignment="Left" Margin="116,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
         <TextBox x:Name="txtAccountName" HorizontalAlignment="Left" Margin="116,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" IsReadOnly="True"/>
-        <TextBox x:Name="txtAccountEmail" HorizontalAlignment="Left" Margin="498,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" IsReadOnly="True" Height="23"/>
-        <TextBox x:Name="txtAccountRole" HorizontalAlignment="Left" Margin="498,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" IsReadOnly="True"/>
+        <TextBox x:Name="txtAccountEmail" HorizontalAlignment="Left" Margin="498,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" IsReadOnly="True" Height="20"/>
+        <TextBox x:Name="txtAccountRole" HorizontalAlignment="Left" Margin="498,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" IsReadOnly="True"/>
 
         <DataGrid x:Name="dgAccounts" Margin="58,217,58,96" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgAccounts_SelectionChanged">
             <DataGrid.Columns>

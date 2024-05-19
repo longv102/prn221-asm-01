@@ -17,9 +17,9 @@ namespace VuLongWPF
         public NewsArticleRequest Request { get; set; } = null!;
 
         private readonly ICategoryRepository _categoryRepository;
-        
+
         private readonly INewsRepository _newsRepository;
-        
+
         public NewsManagementSubWindow()
         {
             InitializeComponent();
@@ -30,23 +30,40 @@ namespace VuLongWPF
 
         private void NewsManagementSubWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var categories = _categoryRepository.GetCategories();
-            cboCategory.ItemsSource = categories;
-            cboCategory.DisplayMemberPath = "CategoryName";
-            cboCategory.SelectedValuePath = "CategoryId";
-            // Set the value of date picker
-            dpDate.SelectedDate = DateTime.Now;
+            try
+            {
+                var categories = _categoryRepository.GetCategories();
+                cboCategory.ItemsSource = categories;
+                cboCategory.DisplayMemberPath = "CategoryName";
+                cboCategory.SelectedValuePath = "CategoryId";
+                // Set the value of date picker
+                dpDate.SelectedDate = DateTime.Now;
 
-            if (IsUpdate)
-            {
-                btnCreate.Visibility = Visibility.Collapsed;
-                btnUpdate.Visibility = Visibility.Visible;
-                txtArticleId.IsEnabled = false;
+                if (IsUpdate)
+                {
+                    txtArticleId.IsEnabled = false;
+                    btnCreate.Visibility = Visibility.Collapsed;
+                    btnUpdate.Visibility = Visibility.Visible;
+                    var news = _newsRepository.GetNewsById(Request.NewsArticleId);
+                    if (news is not null)
+                    {
+                        txtArticleId.Text = news.NewsArticleId;
+                        txtContent.Text = news.NewsContent;
+                        txtTitle.Text = news.NewsTitle;
+                        txtArticleId.Text = news.NewsArticleId;
+                        //cboCategory.DisplayMemberPath = news.CategoryName;
+                        cboCategory.Text = news.CategoryName;
+                    };
+                }
+                else
+                {
+                    btnCreate.Visibility = Visibility.Visible;
+                    btnUpdate.Visibility = Visibility.Collapsed;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btnCreate.Visibility = Visibility.Visible;
-                btnUpdate.Visibility = Visibility.Collapsed;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -96,7 +113,7 @@ namespace VuLongWPF
                     CreatedDate = dpDate.SelectedDate,
                     CreatedById = UserId
                 };
-                MessageBoxResult option = MessageBox.Show("Create the news?", "Confirm Create", 
+                MessageBoxResult option = MessageBox.Show("Create the news?", "Confirm Create",
                     MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (option == MessageBoxResult.Yes)
                 {

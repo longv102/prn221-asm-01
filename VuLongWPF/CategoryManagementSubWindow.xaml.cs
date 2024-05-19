@@ -14,7 +14,7 @@ namespace VuLongWPF
 
         public bool IsUpdate { get; set; }
 
-        public CategoryDto? Request {  get; set; }
+        public CategoryDto? Request { get; set; }
 
         public CategoryManagementSubWindow()
         {
@@ -32,6 +32,7 @@ namespace VuLongWPF
                 lblCategoryId.Visibility = Visibility.Visible;
                 txtCategoryId.Visibility = Visibility.Visible;
 
+                txtCategoryId.IsEnabled = false;
                 txtCategoryId.Text = Request?.CategoryId.ToString();
                 txtCategoryName.Text = Request?.CategoryName;
                 txtCategoryDes.Text = Request?.CategoryDesciption;
@@ -63,7 +64,7 @@ namespace VuLongWPF
                     if (result)
                         MessageBox.Show("Create successfully!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                
+
             }
             catch (Exception ex)
             {

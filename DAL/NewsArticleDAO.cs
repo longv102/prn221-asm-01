@@ -118,6 +118,31 @@ namespace DAL
             }
         }
 
+        public NewsArticleResponse GetNewsById(string id)
+        {
+            try
+            {
+                var context = new FunewsManagementDbContext();
+                var news = context.NewsArticles
+                    .Include(x => x.Category)
+                    .FirstOrDefault(x => x.NewsArticleId == id);
+                if (news is null)
+                    throw new Exception("News does not exist!");
+                var response = new NewsArticleResponse()
+                {
+                    NewsArticleId = news.NewsArticleId,
+                    NewsTitle = news.NewsTitle,
+                    NewsContent = news.NewsContent,
+                    CategoryName = news.Category?.CategoryName,
+                };
+                return response;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public bool DeleteNews(string id)
         {
             var result = false;
@@ -206,6 +231,76 @@ namespace DAL
                 throw;
             }
             return result;
+        }
+
+        public IEnumerable<NewsArticleResponse> GetNewsByTitle(string title)
+        {
+            try
+            {
+                var context = new FunewsManagementDbContext();
+                var news = context.NewsArticles
+                    .Include(x => x.Category)
+                    .Include(x => x.CreatedBy)
+                    .Where(x => x.NewsTitle.Contains(title))
+                    .ToList();
+                if (!news.Any())
+                    throw new Exception("News does not exist!");
+                
+                var response = new List<NewsArticleResponse>();
+                foreach (var item in news)
+                {
+                    var mappedNews = new NewsArticleResponse();
+                    
+                    mappedNews.NewsArticleId = item.NewsArticleId;
+                    mappedNews.NewsTitle = item.NewsTitle;
+                    mappedNews.NewsContent = item.NewsContent;
+                    mappedNews.CategoryName = item.Category?.CategoryName;
+                    mappedNews.CreatedDate = item.CreatedDate;
+                    mappedNews.CreatedBy = item.CreatedBy?.AccountName;
+                    mappedNews.ModifiedDate = item.ModifiedDate;
+                    response.Add(mappedNews);
+                }
+                return response;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<NewsArticleResponse> GetNewsByContent(string content)
+        {
+            try
+            {
+                var context = new FunewsManagementDbContext();
+                var news = context.NewsArticles
+                    .Include(x => x.Category)
+                    .Include(x => x.CreatedBy)
+                    .Where(x => x.NewsContent.Contains(content))
+                    .ToList();
+                if (!news.Any())
+                    throw new Exception("News does not exist!");
+
+                var response = new List<NewsArticleResponse>();
+                foreach (var item in news)
+                {
+                    var mappedNews = new NewsArticleResponse();
+
+                    mappedNews.NewsArticleId = item.NewsArticleId;
+                    mappedNews.NewsTitle = item.NewsTitle;
+                    mappedNews.NewsContent = item.NewsContent;
+                    mappedNews.CategoryName = item.Category?.CategoryName;
+                    mappedNews.CreatedDate = item.CreatedDate;
+                    mappedNews.CreatedBy = item.CreatedBy?.AccountName;
+                    mappedNews.ModifiedDate = item.ModifiedDate;
+                    response.Add(mappedNews);
+                }
+                return response;
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

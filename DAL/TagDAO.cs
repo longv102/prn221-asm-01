@@ -94,5 +94,32 @@ namespace DAL
             }
             return result;
         }
+
+        public bool RemoveTagOfNewsArticle(string newsArticleId, int tagId)
+        {
+            var result = false;
+            try
+            {
+                var context = new FunewsManagementDbContext();
+                var news = context.NewsArticles.Include(x => x.Tags)
+                    .FirstOrDefault(x => x.NewsArticleId == newsArticleId);
+                if (news is null)
+                    throw new Exception("News does not exist!");
+                // Find the Tag within the NewsArticle's Tags collection
+                var tag = news.Tags.FirstOrDefault(t => t.TagId == tagId);
+                if (tag is not null)
+                {
+                    // Remove the Tag from the NewsArticle's Tags collection
+                    news.Tags.Remove(tag);
+                    context.SaveChanges();
+                    result = true;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            return result;
+        }
     }
 }
